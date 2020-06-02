@@ -1,7 +1,6 @@
 {
   "name": "my-bank-api",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +13,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpablolima/api-my-bank.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jpablolima/api-my-bank/issues"
+  },
+  "homepage": "https://github.com/jpablolima/api-my-bank#readme",
+  "description": ""
 }
