@@ -6,20 +6,17 @@ app.use(express.json());
 
 app.post('/account', (req, res) => {
   let account = req.body;
-  //console.log('post account');
-
-  fs.readFile('account.json', 'utf8', (err, data) => {
+  fs.readFile('accounts.json', 'utf8', (err, data) => {
     if (!err) {
       try {
         let json = JSON.parse(data);
         account = {
           id: json.nextId++,
           ...account
-
         };
-        json.account.push(account);
+        json.accounts.push(account);
 
-        fs.writeFile('account.json', JSON.stringify(json), err => {
+        fs.writeFile('accounts.json', JSON.stringify(json), err => {
           if (err) {
             console.log(err);
           } else {
@@ -37,26 +34,24 @@ app.post('/account', (req, res) => {
         error: err.message
       });
     }
-
   });
 });
 
 
-/*   fs.appendFile('account.json', JSON.stringify(params), err => {
-    console.log(err);
-  }); */
-
 app.listen(3000, function () {
 
   try {
-    fs.readFile('account.json', 'utf8', (err, data) => {
+    fs.readFile('accounts.json', 'utf8', (err, data) => {
       if (err) {
         const initialJson = {
           nextId: 1,
-          accont: []
+          accounts: []
         };
-        fs.writeFile('account.json', JSON.stringify(initialJson), err => {
-          console.log(err);
+        fs.writeFile('accounts.json', JSON.stringify(initialJson), err => {
+          if (err) {
+            console.log(err);
+          }
+
         });
 
       }
@@ -66,8 +61,6 @@ app.listen(3000, function () {
   } catch (err) {
     console.log(err);
   }
-
-
 
   console.log('Api Started');
 });
